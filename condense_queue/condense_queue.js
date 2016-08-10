@@ -3,6 +3,8 @@ var QUEUE_ITEM_CLASS = "queue-item";
 var PROGRESS_BAR_CLASS = "episode-progress";
 var SIDEBAR_ID = "sidebar_elements";
 var TITLE_TOGGLE_COLOR = "gold";
+var TITLE_TEXT_CLASS = "series-title ellipsis";
+var SIDEBAR_TEXT_CLASS = "series-title block ellipsis";
 
 function hideWatchedQueueItems() {
     "use strict";
@@ -72,11 +74,11 @@ function createSidebarTitles(up_to_date) {
     var title_id;
     up_to_date.forEach(function (show_element, i) {
         title_text = show_element.getElementsByClassName(
-            "series-title ellipsis"
+            TITLE_TEXT_CLASS
         )[0].textContent;
         title = document.createElement("li");
         title.style.cursor = "pointer";
-        title.className = "series-title block ellipsis";
+        title.className = SIDEBAR_TEXT_CLASS;
         title.appendChild(document.createTextNode(title_text));
         title_id = "up_to_date_" + i;
         title.onclick = titleToggler(title_id);
