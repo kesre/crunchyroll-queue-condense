@@ -4,7 +4,7 @@
 const QUEUE_ITEM_CLASS = "queue-item";
 const PROGRESS_BAR_CLASS = "episode-progress";
 const SIDEBAR_ID = "sidebar_elements";
-const TITLE_TOGGLE_COLOR = "orange";
+const TITLE_TOGGLE_COLOR = "rgb(247, 140, 37)";
 const TITLE_TEXT_CLASS = "series-title ellipsis";
 const SIDEBAR_TEXT_CLASS = "series-title block ellipsis";
 const HIDE_ID = "template_scroller";
