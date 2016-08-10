@@ -1,10 +1,15 @@
-/*jslint browser:true */
-var QUEUE_ITEM_CLASS = "queue-item";
-var PROGRESS_BAR_CLASS = "episode-progress";
-var SIDEBAR_ID = "sidebar_elements";
-var TITLE_TOGGLE_COLOR = "gold";
-var TITLE_TEXT_CLASS = "series-title ellipsis";
-var SIDEBAR_TEXT_CLASS = "series-title block ellipsis";
+/*jslint 
+    browser, es6:true 
+*/
+const QUEUE_ITEM_CLASS = "queue-item";
+const PROGRESS_BAR_CLASS = "episode-progress";
+const SIDEBAR_ID = "sidebar_elements";
+const TITLE_TOGGLE_COLOR = "gold";
+const TITLE_TEXT_CLASS = "series-title ellipsis";
+const SIDEBAR_TEXT_CLASS = "series-title block ellipsis";
+const HIDE_ID = "template_scroller";
+const TIMER_PERIOD = 50;
+const QUEUE_CONTAINER_ID = "container";
 
 function hideWatchedQueueItems() {
     "use strict";
@@ -89,14 +94,33 @@ function createSidebarTitles(up_to_date) {
 }
 
 
-function main() {
+var hide_timer;
+var main_timer;
+
+
+function hidePage() {
     "use strict";
-    var sidebar_list = document.getElementById(SIDEBAR_ID);
-    var up_to_date_container = hideWatchedQueueItems();
-    sidebar_list.appendChild(
-        createSidebarTitles(up_to_date_container)
-    );
+    // Prevents rendering before condenser runs.
+    if (document.body) {
+        document.body.style.display = "none";
+        clearInterval(hide_timer);
+    }
 }
 
 
-main();
+function main() {
+    "use strict";
+    if (document.getElementById(QUEUE_CONTAINER_ID)) {
+        var sidebar_list = document.getElementById(SIDEBAR_ID);
+        var up_to_date_container = hideWatchedQueueItems();
+        sidebar_list.appendChild(
+            createSidebarTitles(up_to_date_container)
+        );
+        clearInterval(main_timer);
+        document.body.style.display = "";
+    }
+}
+
+
+hide_timer = setInterval(function () {hidePage();}, TIMER_PERIOD);
+main_timer = setInterval(function () {main();}, TIMER_PERIOD);

@@ -1,13 +1,14 @@
 {
   "manifest_version": 2,
   "name": "Crunchyroll Queue Condenser",
-  "version": "0.3",
+  "version": "0.4",
   "description": "Hide shows in the queue that don't have new episodes",
  
  "content_scripts": [
     {
       "matches": ["http://www.crunchyroll.com/home/queue"],
-      "js": ["condense_queue.js"]
+      "js": ["condense_queue.js"],
+      "run_at": "document_start"
     }
   ],
   "permissions": [
