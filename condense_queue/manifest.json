@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Crunchyroll Queue Condenser",
-  "version": "0.2",
+  "version": "0.3",
   "description": "Hide shows in the queue that don't have new episodes",
  
  "content_scripts": [
